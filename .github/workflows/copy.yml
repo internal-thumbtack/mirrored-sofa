@@ -47,14 +47,13 @@ jobs:
           run: |
             mkdir -p public/test
             cp -r test/*.json public/test/
-            cp -r test/*.xml public/test/
 
         - name: Commit and push if changes are detected
           run: |
             timestamp=$(date +'%Y-%m-%d %H:%M:%S')
             git config --global user.name 'github-actions'
             git config --global user.email 'github-actions@github.com'
-            git add test/*.json test/*.xml cache/*.json time-series.csv
-            git add public/test/*.json public/test/*.xml
+            git add test/*.json
+            git add public/test/*.json
             git commit -m "Update SOFA data - $timestamp" -a || exit 0
             git push
