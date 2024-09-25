@@ -1,4 +1,4 @@
-name: Copy file from SOFA
+name: Copy
 
 on:
   #schedule:
@@ -12,21 +12,21 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # The first job in this workflow is named build-on-ubuntu
-    build-on-ubuntu:
+    build-and-run:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+      runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
+      # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
 
-      - name: Step 1 - Log the pre-build disc space
-        run: ls
+        - name: Step 1 - Log the pre-build disc space
+          run: ls
         
-      - name: step 2 - Checkout the main GitHub branch
-        uses: actions/checkout@v2 
+        - name: step 2 - Checkout the main GitHub branch
+          uses: actions/checkout@v2 
           
-      - name: Step 3 - List Ubuntu Environment Variables
-        run: env
+        - name: Step 3 - List Ubuntu Environment Variables
+          run: env
 
-      - name: Step 4 - df
-        run: df
+        - name: Step 4 - df
+          run: df
