@@ -38,4 +38,23 @@ jobs:
           run: ls v1/
 
         - name: Step 7 - let's curl!
-          run: curl https://sofafeed.macadmins.io/v1/macos_data_feed.json --create-dirs --output test/macos_data_feed.json
+          run: curl -v https://sofafeed.macadmins.io/v1/macos_data_feed.json --create-dirs --output test/macos_data_feed.json
+
+        - name: Step 8 - ls test/
+          run: ls test/
+
+        - name: Copy v1 data feed files into public dir for VitePress
+          run: |
+            mkdir -p public/v1
+            cp -r test/*.json public/test/
+            cp -r test/*.xml public/test/
+
+        - name: Commit and push if changes are detected
+          run: |
+            timestamp=$(date +'%Y-%m-%d %H:%M:%S')
+            git config --global user.name 'github-actions'
+            git config --global user.email 'github-actions@github.com'
+            git add test/*.json test/*.xml cache/*.json time-series.csv
+            git add public/test/*.json public/test/*.xml
+            git commit -m "Update SOFA data - $timestamp" -a || exit 0
+            git push
