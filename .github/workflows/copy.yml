@@ -45,7 +45,7 @@ jobs:
 
         - name: Copy v1 data feed files into public dir for VitePress
           run: |
-            mkdir -p public/v1
+            mkdir -p public/test
             cp -r test/*.json public/test/
             cp -r test/*.xml public/test/
 
