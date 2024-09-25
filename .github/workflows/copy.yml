@@ -33,3 +33,6 @@ jobs:
 
         - name: Step 4 - pwd
           run: pwd
+
+        - name: Step 4 - ls v1/
+          run: ls v1/
