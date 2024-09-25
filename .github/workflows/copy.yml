@@ -43,10 +43,10 @@ jobs:
         - name: Step 8 - ls test/
           run: ls test/
 
-        - name: Copy v1 data feed files into public dir for VitePress
-          run: |
-            mkdir -p public/test
-            cp -r test/*.json public/test/
+        # - name: Copy v1 data feed files into public dir for VitePress
+          # run: |
+            # mkdir -p public/test
+            # cp -r test/*.json public/test/
 
         - name: Commit and push if changes are detected
           run: |
@@ -54,6 +54,6 @@ jobs:
             git config --global user.name 'github-actions'
             git config --global user.email 'github-actions@github.com'
             git add test/*.json
-            git add public/test/*.json
+            # git add public/test/*.json
             git commit -m "Update SOFA data - $timestamp" -a || exit 0
             git push
